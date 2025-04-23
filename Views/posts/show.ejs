@@ -1,0 +1,53 @@
+<% layout("/Layouts/biolerplate.ejs") %>
+    <div class="showPage">
+        <div class="showCard">
+            UserId : <i>
+                <%= showPost._id %>
+            </i>
+
+            <form method="get" action="/home">
+                <button class="btn btn-light m-2">Exit</button>
+            </form>
+            <span class="user">
+                <b>
+                    jhon doe
+                </b>
+                <span class="time">
+                    <%= showPost.createdAt.toString().split(" ").splice(0,4).join(" ") %>
+                </span>
+            </span>
+
+            <span class=" showBtn">...
+                </span>
+                <span class="showBtnLinks">
+                    <a href="">Edit</a>
+                    <a href="">delete</a>
+                </span>
+
+                <div class="post">
+                    <img src=<%=showPost.image %> alt="" >
+                </div>
+                <div class="caption">
+                    Caption : <b>
+                        <%= showPost.caption %>
+                    </b>
+                </div>
+                <div class="like">
+                    <span>Likes : </span>
+                    <%= showPost.likes %>
+                </div>
+                <div class="comments">
+                    <span>Comments :</span>
+                    <% showPost.comments.forEach(comment=> { %>
+                        <ul>
+                            <li>
+                                <small>From : <%= comment.userId %></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= comment.text %>
+                            </li>
+                        </ul>
+                        <% }) %>
+
+
+                </div>
+        </div>
+    </div>

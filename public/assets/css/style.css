@@ -1,0 +1,233 @@
+body {
+    background: #000000;
+}
+
+/* navbar */
+.navbar {
+    z-index: 1 !important;
+    position: fixed;
+    width: 100%;
+}
+
+/* sidebar */
+/* leftSidebar */
+.leftSidebar {
+    width: 20rem;
+    height: 100vh;
+    background-color: rgb(135, 222, 168);
+    font-weight: 900;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+/* rigntSidebar */
+.rigntSidebar {
+    width: 20rem;
+    height: 100vh;
+    background-color: burlywood;
+    font-weight: 900;
+    position: fixed;
+    right: 0;
+    top: 0
+}
+
+/* mainPage */
+.mainPage {
+    /* background: #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 60px;
+    width: 50rem;
+    margin: 0 auto;
+}
+
+/* .container {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+} */
+
+.card {
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.448);
+    width: 60%;
+    height: fit-content;
+    padding: 20px;
+    margin: 15px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    position: relative;
+}
+
+.card .user {
+    width: 100%;
+    text-align: start;
+}
+
+.card .time {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.card .post {
+    margin: 10px 0px;
+}
+
+.card .post img {
+    height: 70vh;
+}
+
+.card .like {
+    width: 100%;
+    text-align: start;
+}
+
+.card .caption {
+    width: 100%;
+    text-align: start;
+}
+
+.card .comments {
+    width: 100%;
+    text-align: start;
+}
+
+.card .showBtn {
+    rotate: 90deg;
+    font-size: 20px;
+    font-weight: 800;
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.card .showBtnLinks {
+    position: absolute;
+    margin: 0 auto;
+    border: 0.6px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    padding: 30px 85px;
+    transition: all 0.1s ease-in;
+    opacity: 0;
+}
+
+.card .showBtnLinks a {
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: white;
+}
+
+.card .showBtnLinks a:hover {
+    color: gray;
+}
+
+/* showPage */
+.showPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 60px;
+    width: 50rem;
+    margin: 0 auto;
+}
+
+.showCard {
+    width: 60%;
+    height: fit-content;
+    padding: 20px;
+    margin: 15px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    object-fit: cover;
+    position: relative;
+    background-color: white;
+}
+
+
+.showCard .user {
+    width: 100%;
+    text-align: start;
+}
+
+.showCard .time {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.showCard .post {
+    margin: 10px 0px;
+}
+
+.showCard .post img {
+    height: 70vh;
+}
+
+.showCard .like {
+    width: 100%;
+    text-align: start;
+}
+
+.showCard .caption {
+    width: 100%;
+    text-align: start;
+}
+
+.showCard .comments {
+    width: 100%;
+    text-align: start;
+}
+
+.showCard .showBtn {
+    rotate: 90deg;
+    font-size: 20px;
+    font-weight: 800;
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.showCard .showBtnLinks {
+    position: absolute;
+    margin: 0 auto;
+    border: 0.6px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    padding: 30px 85px;
+    transition: all 0.1s ease-in;
+    opacity: 0;
+}
+
+.showCard .showBtnLinks a {
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: white;
+}
+
+.showCard .showBtnLinks a:hover {
+    color: gray;
+}
