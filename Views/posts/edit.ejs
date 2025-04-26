@@ -1,4 +1,24 @@
 <% layout("/Layouts/biolerplate.ejs") %>
-    <div class="editPage">
-        edit page
+    <div class="editPage row">
+        Edit page
+        <form method="POST" action="/show/<%= post._id %>?_method=PUT" class="col-8 m-3 needs-validation" novalidate>
+            
+            <label for="userName" class="form-label mt-3">Username</label>
+            <input type="text" class="form-control" id="userName" placeholder="userName" name="userName"
+                value="<%= post.user.username  %>">
+
+                <label for="profilePic" class="form-label mt-3">Profile Pic</label>
+            <input type="text" class="form-control" id="profilePic" name="userProfilePic" value="<%= post.user.profilePic  %>">
+
+            <label for="image" class="form-label mt-3">Image</label>
+            <input type="text" class="form-control" id="image" name="image" value="<%= post.image %>">
+
+            <label for="caption" class="form-label mt-3">Caption</label>
+            <textarea name="caption" type="text" class="form-control" id="caption"><%= post.caption %></textarea>
+            
+            <button type="submit" class="btn btn-success col-2 offset-5 mt-5">Edit</button>
+            <br>
+           <h5><a href="/" class="m-2 badge text-bg-secondary">Exit</a></h5> 
+        </form>
+    </div>
     </div>

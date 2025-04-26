@@ -11,6 +11,8 @@ showBtn.forEach((btn, idx) => {
 
     window.addEventListener("scroll", () => {
         links.style.opacity = 0;
+        POST.style.opacity = 1;
+
     });
     btn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -18,5 +20,11 @@ showBtn.forEach((btn, idx) => {
 
     document.addEventListener("click", () => {
         links.style.opacity = 0;
+        POST.style.opacity = 1;
+
     })
 });
+
+// function like() {
+
+// }

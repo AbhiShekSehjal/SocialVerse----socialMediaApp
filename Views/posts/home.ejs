@@ -1,11 +1,36 @@
 <% layout("/Layouts/biolerplate.ejs") %>
-    <div class="mainPage">
+    <div class="mainPage row">
+
+        <div class="createPost col-9 row">
+            <form method="post" action="/" class="needs-validation p-3" novalidate>
+                <div class="row">
+                    <label for="userName" class="form-label col-6">Username
+                        <input type="text" class="form-control" id="userName" placeholder="username" name="userName">
+                    </label>
+                    <label for="caption" class="form-label col-6">Caption
+                        <input type="text" class="form-control" id="caption" placeholder="caption"
+                            name="caption"></label>
+                    <label for="image" class="form-label col-12 mb-2">Image
+                        <input type="text" class="form-control" id="image"
+                            placeholder="https://new-year-background-736885_1280.jpg" name="image"></label>
+
+                    <button type="submit" class="btn btn-success">Create Post</button>
+                </div>
+            </form>
+        </div>
 
         <% posts.forEach(p=> { %>
             <div class="card">
                 <span class="user">
+
+                    <form method="get" action="/user/<%= p._id %>" style="display: inline; ">
+                        <button style="border: none; background-color: transparent;" class="cursor: pointer;">
+                            <img class="userProfilePic" src=<%=p.user.profilePic %> alt="userProfilePic">
+                        </button>
+                    </form>
+
                     <b>
-                        jhon doe
+                        <%= p.user.username %>
                     </b>
                     <span class="time">
                         <%= p.createdAt.toString().split(" ").splice(0,4).join(" ") %>
@@ -15,31 +40,49 @@
                 <span class=" showBtn">...
                     </span>
                     <span class="showBtnLinks">
-                        <form method="get" action="/edit/<%= p._id  %>">
-                            <button>Edit</button>
-                        </form>
-                        <form method="get" action="/show/<%= p._id %>">
-                            <button>show</button>
+
+                        <form method="get" action="/edit/<%= p._id %>">
+                            <button
+                                style="border: none; background-color: transparent; font-weight: 700; color: white;">Edit</button>
                         </form>
 
-                        <a href="">delete</a>
+                        <form method="get" action="/show/<%= p._id %>">
+                            <button
+                                style="border: none; background-color: transparent; font-weight: 700; color: white;">Show</button>
+                        </form>
+
+                        <form method="post" action="/delete/<%= p._id %>?_method=DELETE">
+                            <button
+                                style="border: none; background-color: transparent; font-weight: 700; color: white;">Delete</button>
+                        </form>
+
                     </span>
 
                     <div class="post">
-                        <img src=<%=p.image %> alt="" >
+                        <img class="postImage" src=<%=p.image %> alt="" >
                     </div>
                     <div class="caption">
                         Caption : <b>
                             <%= p.caption %>
                         </b>
                     </div>
-                    <div class="like">
-                        <span>Likes : </span>
+                    <div class="like mb-2">
+                        <span class="btn btn-primary btn-sm" onclick="like()">Like</span>
+                        <span class="btn btn-primary btn-sm" onclick="unlike()">UnLike</span>
                         <%= p.likes %>
                     </div>
                     <div class="comments">
-                        <span>Comments :
-                            <%= p.comments.length %>
+
+
+                        <form method="post" action="/<%= p._id %>/createComment">
+                            <div class="commentCreate row">
+                                <input type="text" placeholder="comment here!" class="col-9" name="newComments">
+                                <button class="btn btn-primary btn-sm col-2 ms-auto">Submit</button>
+                            </div>
+                        </form>
+
+
+                        <span>Comments : <%= p.comments.length %>
                         </span>
                     </div>
             </div>

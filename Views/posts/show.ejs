@@ -1,16 +1,16 @@
 <% layout("/Layouts/biolerplate.ejs") %>
     <div class="showPage">
-        <div class="showCard">
+        <p style="color: white;">show page</p>
+        <div class="showCard m-3">
             UserId : <i>
                 <%= showPost._id %>
             </i>
 
-            <form method="get" action="/home">
-                <button class="btn btn-light m-2">Exit</button>
-            </form>
+
             <span class="user">
+                <img class="showPageUserProfilePic" src=<%=showPost.user.profilePic %> alt="userProfilePic">
                 <b>
-                    jhon doe
+                    <%= showPost.user.username %>
                 </b>
                 <span class="time">
                     <%= showPost.createdAt.toString().split(" ").splice(0,4).join(" ") %>
@@ -20,8 +20,18 @@
             <span class=" showBtn">...
                 </span>
                 <span class="showBtnLinks">
-                    <a href="">Edit</a>
-                    <a href="">delete</a>
+
+                    <a href="/" class="m-2">Exit</a>
+
+                    <form method="get" action="/edit/<%= showPost._id %>">
+                        <button
+                            style="border: none; background-color: transparent; font-weight: 700; color: white;">Edit</button>
+                    </form>
+
+                    <form method="post" action="/delete/<%= showPost._id %>?_method=DELETE">
+                        <button
+                            style="border: none; background-color: transparent; font-weight: 700; color: white;">Delete</button>
+                    </form>
                 </span>
 
                 <div class="post">
@@ -38,16 +48,14 @@
                 </div>
                 <div class="comments">
                     <span>Comments :</span>
-                    <% showPost.comments.forEach(comment=> { %>
+
+                    <% for(comment of showPost.comments) {%>
                         <ul>
                             <li>
-                                <small>From : <%= comment.userId %></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <%= comment.text %>
                             </li>
                         </ul>
-                        <% }) %>
-
-
+                        <% }%>
                 </div>
         </div>
     </div>

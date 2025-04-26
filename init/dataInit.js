@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const Post = require("../Models/posts")
+const POST = require("../Models/posts");
+const USER = require("../Models/users")
 const initdata = require("./data");
 
 main().then((res) => {
@@ -10,10 +11,20 @@ async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/SoicalVerse');
 }
 
-async function addData() {
-    await Post.deleteMany({});
-    const insertedData = await Post.insertMany(initdata.data);
-    console.log(insertedData);
+async function addPosts() {
+    await POST.deleteMany({});
+    const insertedPosts = await POST.insertMany(initdata.data);
+    console.log(insertedPosts);
+    mongoose.connection.close();
 }
 
-addData();
+// async function addUser() {
+//     await USER.deleteMany({});
+//     const insertedUsers = await USER.insertMany(initdata.user);
+//     console.log(insertedUsers);
+//     mongoose.connection.close();
+// }
+
+// addUser();
+
+addPosts();
