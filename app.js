@@ -1,10 +1,12 @@
 const express = require("express");
 const posts = require("./Models/posts");
+const User = require("./Models/users");
 const Comments = require("./Models/comments");
 const mongoose = require("mongoose");
 const methodOverride = require('method-override');
 const engine = require("ejs-mate");
 const path = require("path");
+
 const app = express();
 const port = 8080;
 
@@ -31,7 +33,7 @@ async function main() {
 //Home route
 app.get("/", async (req, res) => {
     try {
-        const allPosts = await posts.find();
+        const allPosts = await posts.find().populate("user");
         res.render("./posts/home.ejs", { posts: allPosts })
     } catch (error) {
         res.status(500).send("Error from fatching posts");
@@ -42,7 +44,7 @@ app.get("/", async (req, res) => {
 app.get("/show/:id", async (req, res) => {
     try {
         let { id } = req.params;
-        const showPost = await posts.findById(id).populate({ path: "comments" });
+        const showPost = await posts.findById(id);
         // console.log(showPost);
 
         // if (!showPost) {
@@ -109,11 +111,15 @@ app.get("/user/:id", async (req, res) => {
 //create post route
 app.post("/", async (req, res) => {
 
+    const user = await User.findOne({ username: "john123" });
+
     let { userName, caption, image } = req.body;
+    if (!image || image.trim() == "") {
+        image = undefined;
+    }
+
     let newPost = new posts({
-        user: {
-            username: userName
-        },
+        user: user._id,
         caption: caption,
         image: image
     })

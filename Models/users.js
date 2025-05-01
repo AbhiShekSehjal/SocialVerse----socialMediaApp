@@ -1,40 +1,19 @@
-// const mongoose = require("mongoose");
-// const { Schema } = mongoose;
-// const Post = require("./posts");
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-// const userSchema = new Schema({
-//     userName: {
-//         type: String
-//     },
-//     profilePic: {
-//         type: String,
-//         default: "https://media.greatbigphotographyworld.com/wp-content/uploads/2022/04/young-woman.jpg"
-//     },
-//     bio: {
-//         type: String
-//     },
-//     followers:
-//         [
-//             {
-//                 type: Schema.Types.ObjectId,
-//                 ref: 'User'
-//             }
-//         ],
-//     following:
-//         [
-//             {
-//                 type: Schema.Types.ObjectId,
-//                 ref: 'User'
-//             }
-//         ],
-//     posts: [
-//         {
-//             type: Schema.Types.OjectId,
-//             ref: Post
-//         }
-//     ]
-// })
+const userSchema = new Schema({
+    username: {
+        type: String,
+        required: true,
+        // unique: true,
+        default: "Raju"
+    },
+    profilePic: {
+        type: String,
+        default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp-VJxaFIy3CEl9egxp5FJ1Qgk5jrPM03s4A&s"
+    }
+})
 
-// const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
-// module.exports = User;
+module.exports = User;

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
+const { schema } = require("./users");
 const { Schema } = mongoose;
-const Comment = require("./comments")
 
 const postSchema = new Schema({
     image: {
         type: String,
-        default: "https://media.greatbigphotographyworld.com/wp-content/uploads/2022/04/young-woman.jpg"
+        default: "https://images.unsplash.com/photo-1652100116406-b665bdcd688c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     caption: {
         type: String,
@@ -13,7 +13,7 @@ const postSchema = new Schema({
     },
     likes: {
         type: Number,
-        default: 0
+        default: 123
     },
 
 
@@ -26,49 +26,15 @@ const postSchema = new Schema({
 
 
     user: {
-        username: {
-            type: String,
-            required: true,
-        },
-        profilePic: {
-            type: String,
-            default: "https://media.greatbigphotographyworld.com/wp-content/uploads/2022/04/young-woman.jpg"
-        },
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     },
+
     createdAt: {
         type: Date,
         default: Date.now()
     },
-
-
-    // user: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true
-    // },
-
-    // likes:
-    //     [
-    //         {
-    //             type: Schema.Types.ObjectId,
-    //             ref: 'User'
-    //         }
-    //     ],
-    // comments: [
-    //     {
-    //         user: { type: Schema.Types.ObjectId, ref: 'User' },
-    //         text: { type: String, required: true },
-    //         createdAt: { type: Date, default: Date.now }
-    //     }
-    // ],
-
-
-
-
-    // userProfilePic: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: User,
-    // }
 });
 
 const Post = mongoose.model("Post", postSchema);

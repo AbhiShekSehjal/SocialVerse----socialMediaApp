@@ -1,19 +1,20 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const commentSchema = Schema({
+const commentSchema = new Schema({
     user: {
-        type: String,
-        default: "Rahul charwari singh"
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     },
     text: {
         type: String,
-        default: "wonderfull"
+        required: true
     },
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now()
-    // }
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 const Comment = mongoose.model("Comment", commentSchema);

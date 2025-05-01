@@ -11,7 +11,6 @@ showBtn.forEach((btn, idx) => {
 
     window.addEventListener("scroll", () => {
         links.style.opacity = 0;
-        POST.style.opacity = 1;
 
     });
     btn.addEventListener("click", (e) => {
@@ -20,11 +19,15 @@ showBtn.forEach((btn, idx) => {
 
     document.addEventListener("click", () => {
         links.style.opacity = 0;
-        POST.style.opacity = 1;
 
     })
 });
 
-// function like() {
+// let likeBtn = document.getElementById("likeBtn");
+// const Post = require("/Models/posts")
 
+// if (likeBtn) {
+//     Post.likes
+//     console.log(Post.likes);
+    
 // }

@@ -18,13 +18,4 @@ async function addPosts() {
     mongoose.connection.close();
 }
 
-// async function addUser() {
-//     await USER.deleteMany({});
-//     const insertedUsers = await USER.insertMany(initdata.user);
-//     console.log(insertedUsers);
-//     mongoose.connection.close();
-// }
-
-// addUser();
-
 addPosts();

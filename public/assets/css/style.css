@@ -112,6 +112,7 @@ body {
     justify-content: center;
     object-fit: cover;
     position: relative;
+    border-radius: 10px;
 }
 
 .card .user {
