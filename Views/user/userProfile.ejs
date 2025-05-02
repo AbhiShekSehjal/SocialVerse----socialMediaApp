@@ -1,6 +1,55 @@
 <% layout("/Layouts/biolerplate.ejs") %>
 
     <div class="userProfile">
-        user profile
+
+        <div class="userInfo">
+
+            <div class="profilePicture">
+                <img src="<%= userProfile.user.profilePic %>" alt="">
+            </div>
+
+            <div class="rightSide">
+                <b class="UserProfileName">
+                    <%= userProfile.user.username %>
+                </b>
+
+                <p>
+                    <%= userProfile.user.bio %>
+                </p>
+                <p style="display: inline;">
+                    Followers : <b>
+                        <%= userProfile.user.followers %>
+                    </b>
+                </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p style="display: inline;">
+                    Followings : <b>
+                        <%= userProfile.user.following %>
+                    </b>
+                </p>
+                <br>
+                <br>
+
+                <button class="btn btn-success btn-sm">Follow</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary btn-sm">Message</button>
+            </div>
+
+        </div>
+
+        <div class="allPosts">
+
+            <% userProfile.user.userAllPost.forEach(post=> {%>
+
+                <div class="userPost">
+                    <img src="<%= post.image %>" alt="" height="300">
+                    <!-- <p>
+                        <%= post.caption %>
+                    </p>
+                    <p>Likes : <%= post.likes %>
+                    </p> -->
+                </div>
+                <% }); %>
+
+        </div>
 
     </div>

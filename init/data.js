@@ -22,10 +22,34 @@ const postData = [
             },
         ],
         user: {
-            username: "debug_diva",
-            profilePic: "https://randomuser.me/api/portraits/women/33.jpg"
+            username: "Abhishek",
+            profilePic: "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+            bio: "Living my best life 🚀, Adventure seeker, Music enthusiast 🎶, or Dream big, work hard, stay humble.",
+            followers: 540,
+            following: 12,
+            userAllPost: [
+                {
+                    image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+                    caption: "Hello friends",
+                    likes: 454,
+                },
+                {
+                    image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+                    caption: "Hello friends",
+                    likes: 454,
+                },
+                {
+                    image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+                    caption: "Hello friends",
+                    likes: 454,
+                },
+                {
+                    image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+                    caption: "Hello friends",
+                    likes: 454,
+                },
+            ]
         },
-        createdAt: Date.now()
     },
 ]
 

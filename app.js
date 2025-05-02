@@ -33,7 +33,9 @@ async function main() {
 //Home route
 app.get("/", async (req, res) => {
     try {
-        const allPosts = await posts.find().populate("user");
+        const allPosts = await posts.find().populate("comments");
+        // console.log(allPosts);
+
         res.render("./posts/home.ejs", { posts: allPosts })
     } catch (error) {
         res.status(500).send("Error from fatching posts");
@@ -103,15 +105,13 @@ app.delete("/delete/:id", async (req, res) => {
 app.get("/user/:id", async (req, res) => {
     let { id } = req.params;
     let userProfile = await posts.findById(id);
-    console.log(userProfile);
+    // console.log(userProfile.user);
 
-    res.render("./user/userProfile.ejs")
+    res.render("./user/userProfile.ejs", { userProfile })
 })
 
 //create post route
 app.post("/", async (req, res) => {
-
-    const user = await User.findOne({ username: "john123" });
 
     let { userName, caption, image } = req.body;
     if (!image || image.trim() == "") {
@@ -119,7 +119,9 @@ app.post("/", async (req, res) => {
     }
 
     let newPost = new posts({
-        user: user._id,
+        user: {
+            username: userName,
+        },
         caption: caption,
         image: image
     })
@@ -133,19 +135,33 @@ app.post("/", async (req, res) => {
 })
 
 // createComment route
-app.post("/:id/createComment", async (req, res) => {
+app.post("/createComment/:id", async (req, res) => {
 
     let { id } = req.params;
     let { newComments } = req.body;
-    let findPost = await posts.findById(id);
-    // console.log(findPost);
+    let findPost = await posts.findById(id).populate("comments");
 
-    // findPost.comments.push(newComments)
+    console.log(newComments);
 
-    // await findPost.save();
+    if (!newComments || newComments.trim() == "") {
+        console.log("Empty comment not allowed");
 
-    res.redirect("/");
+    } else {
+
+        // ...........start from here............
+
+        let result = findPost.comments.push({ text: newComments });
+        // console.log(result);
+    }
+
+    // res.send("comment page");
+    res.redirect("/")
 })
+
+// app.use((err, req, res, next) => {
+//     console.log("--------error---------");
+//     next(err)
+// })
 
 app.listen(port, () => {
     console.log("Server is running on port " + port);

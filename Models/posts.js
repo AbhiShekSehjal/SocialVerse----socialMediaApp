@@ -16,20 +16,45 @@ const postSchema = new Schema({
         default: 123
     },
 
-
     comments: [
         {
             type: Schema.Types.ObjectId,
             ref: "Comment"
+
         }
     ],
 
-
     user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+        username: String,
+        profilePic: {
+            type: String,
+            default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp-VJxaFIy3CEl9egxp5FJ1Qgk5jrPM03s4A&s"
+        },
+        bio: String,
+        followers: Number,
+        following: Number,
+        userAllPost: [
+            {
+                image: String,
+                caption: String,
+                likes: Number,
+            }
+        ]
     },
+
+    // comments: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Comment"
+    //     }
+    // ],
+
+
+    // user: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User",
+    //     required: true
+    // },
 
     createdAt: {
         type: Date,
