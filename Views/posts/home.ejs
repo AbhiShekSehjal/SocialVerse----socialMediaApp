@@ -5,9 +5,9 @@
         <div class="createPost col-9 row">
             <form method="post" action="/" class="needs-validation p-3" novalidate>
                 <div class="row">
-                    <label for="userName" class="form-label col-6">Username
+                    <!-- <label for="userName" class="form-label col-6">Username
                         <input type="text" class="form-control" id="userName" placeholder="username" name="userName">
-                    </label>
+                    </label> -->
                     <label for="caption" class="form-label col-6">Caption
                         <input type="text" class="form-control" id="caption" placeholder="caption"
                             name="caption"></label>
@@ -20,13 +20,14 @@
             </form>
         </div>
 
-        <% posts.forEach(post => { %>
+        <% posts.forEach(post=> { %>
             <div class="card">
                 <span class="user">
 
                     <form method="get" action="/user/<%= post._id %>" style="display: inline; ">
                         <button style="border: none; background-color: transparent;" class="cursor: pointer;">
-                            <img class="userProfilePic" src=<%=post.user.profilePic %> alt="userProfilePic">
+                            <img class="userProfilePic" src=<%= post.user.profilePic %>
+                                alt="userProfilePic">
                         </button>
                     </form>
 
@@ -84,8 +85,8 @@
 
 
                         <span>Comments : <%= post.comments.length %>
-                        </span>
-                    </div>
+                </span>
             </div>
-            <% }); %>
     </div>
+    <% }); %>
+        </div>

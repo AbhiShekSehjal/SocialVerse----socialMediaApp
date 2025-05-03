@@ -8,7 +8,7 @@
 
 
             <span class="user">
-                <img class="showPageUserProfilePic" src=<%= showPost.user.profilePic %> alt="userProfilePic">
+                <img class="showPageUserProfilePic" src=<%=showPost.user.profilePic %> alt="userProfilePic">
                 <b>
                     <%= showPost.user.username %>
                 </b>
@@ -49,13 +49,14 @@
                 <div class="comments">
                     <span>Comments :</span>
 
-                    <% for(comment of showPost.comments) {%>
+
+                    <% for(let i=0; i < showPost.comments.length;i++){ %>
                         <ul>
                             <li>
-                                <%= comment.text %>
+                                <%= showPost.comments[i] %>
                             </li>
                         </ul>
-                        <% }%>
+                        <% } %>
                 </div>
         </div>
     </div>

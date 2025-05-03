@@ -13,8 +13,13 @@ async function main() {
 
 async function addPosts() {
     await POST.deleteMany({});
-    const insertedPosts = await POST.insertMany(initdata.data);
-    console.log(insertedPosts);
+
+    initdata.postsData = initdata.postsData.map((obj) => ({ ...obj, user: "68164745034e27a35070829a" }))
+
+    const insertedPosts = await POST.insertMany(initdata.postsData);
+
+    console.log("Posts--------------", insertedPosts);
+
     mongoose.connection.close();
 }
 

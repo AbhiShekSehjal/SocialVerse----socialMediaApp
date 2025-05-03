@@ -10,20 +10,24 @@
 
             <div class="rightSide">
                 <b class="UserProfileName">
-                    <%= userProfile.user.username %>
+                    <%= userProfile.user.fullName %>
                 </b>
+
+                <i>
+                    <%= userProfile.user.email %>
+                </i>
 
                 <p>
                     <%= userProfile.user.bio %>
                 </p>
                 <p style="display: inline;">
                     Followers : <b>
-                        <%= userProfile.user.followers %>
+                        <%= userProfile.user.followers.length  %>
                     </b>
                 </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p style="display: inline;">
                     Followings : <b>
-                        <%= userProfile.user.following %>
+                        <%= userProfile.user.following.length  %>
                     </b>
                 </p>
                 <br>
@@ -36,20 +40,6 @@
 
         </div>
 
-        <div class="allPosts">
 
-            <% userProfile.user.userAllPost.forEach(post=> {%>
-
-                <div class="userPost">
-                    <img src="<%= post.image %>" alt="" height="300">
-                    <!-- <p>
-                        <%= post.caption %>
-                    </p>
-                    <p>Likes : <%= post.likes %>
-                    </p> -->
-                </div>
-                <% }); %>
-
-        </div>
 
     </div>
